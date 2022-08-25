@@ -1,0 +1,5 @@
+<h1>Shops</h1>
+<% ordered_shops = @shops.order("created_at DESC") %>
+<% ordered_shops.each do |shop| %>
+<p><%= shop.name %>: <%= shop.created_at %><p>
+  <% end %>

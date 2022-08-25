@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe Bike, type: :model do
-  describe 'instance methods' do
-  end
-
+  it {should belong_to :shop}
 end
+
