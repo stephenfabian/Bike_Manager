@@ -38,4 +38,19 @@ RSpec.describe 'the shops show page' do #USER STORY 2
       end
     end 
   end
+
+# User Story 10, Parent Child Index Link
+
+  describe 'As a visitor' do
+    describe 'When I visit a parent show page (/parents/:id)' do
+      it 'Then I see a link to take me to that parents `child_table_name` page (/parents/:id/child_table_name)' do
+        @shop = Shop.create!(name: "Denver Bike Shop", rentals: TRUE, rank: 8)
+
+        visit "/shops/#{@shop.id}"
+
+        click_on("Bikes At This Shop")
+        expect(current_path).to eq("/shops/#{@shop.id}/bikes")
+      end
+    end
+  end
 end
