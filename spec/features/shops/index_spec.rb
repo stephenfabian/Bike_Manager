@@ -62,4 +62,47 @@ RSpec.describe 'the Shop Index sorted by Most Recently Created' do #USER STORY 6
       end
     end
   end
+
+  # User Story 11, Parent Creation 
+
+  describe 'As a visitor' do 
+    describe 'When I visit the Parent Index page' do
+      it 'Then I see a link to create a new Parent record, New Parent' do
+
+        visit '/shops'
+        expect(page).to have_content("New Shop")
+        save_and_open_page
+
+      end
+    end
+  end
+
+describe 'When I click this link' do 
+  it 'Then I am taken to /parents/new where I  see a form for a new parent record' do
+
+     visit '/shops'
+     click_link("New Shop")
+     expect(current_path).to eq("/shops/new")
+  end
+end
+
+  it 'can create a new shop' do 
+     visit '/shops/new'
+
+     fill_in('Name', with: 'OregonBikeShop')
+     click_button('Create Shop')
+
+     expect(current_path).to eq("/shops")
+     expect(page).to have_content('OregonBikeShop')
+
+  end
+describe 'When I fill out the form with a new parents attributes:'
+describe 'And I click the button "Create Parent" to submit the form'
+describe 'Then a `POST` request is sent to the /parents route,'
+describe 'a new parent record is created,'
+describe 'and I am redirected to the Parent Index page where I see the new Parent displayed.'
+
+
+
+
 end

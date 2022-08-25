@@ -1,5 +1,7 @@
 <%= link_to "Bike Index", "/bikes" %>
 <%= link_to "Shop Index", "/shops" %>
+<%= link_to "New Shop", "/shops/new" %>
+
 
 <h1>Shops</h1>
 <% ordered_shops = @shops.order("created_at DESC") %>

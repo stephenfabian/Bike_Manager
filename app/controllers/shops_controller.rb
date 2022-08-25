@@ -9,9 +9,15 @@ class ShopsController < ApplicationController
   end
 
   def children_index
-  @shop = Shop.find(params[:id])
+    @shop = Shop.find(params[:id])
     @bikes = Bike.all
-    
   end
 
+  def new
+  end
+
+  def create
+   shop = Shop.create(name: params[:name])
+   redirect_to "/shops"
+  end
 end
