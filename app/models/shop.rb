@@ -1,5 +1,5 @@
 class Shop < ApplicationRecord
   # require 'pry'; binding.pry
-has_many :bikes
+  has_many :bikes
 
 end

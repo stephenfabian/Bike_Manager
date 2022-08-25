@@ -2,7 +2,7 @@ class BikesController < ApplicationController
   def index
     # require 'pry'; binding.pry
     @bikes = Bike.all
-    @shops = Shop.all
+    @shops = Shop.all #might not need
   end
 
   def show
