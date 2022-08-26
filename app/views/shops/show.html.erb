@@ -1,6 +1,7 @@
 <%= link_to "Bike Index", "/bikes" %>
 <%= link_to "Shop Index", "/shops" %>
 <%= link_to "Bikes At This Shop", "/shops/#{@shop.id}/bikes" %>
+<%= link_to "Update Shop", "/shops/#{@shop.id}/edit" %>
 
 <h1><%=@shop.name%></h1>
 <p>Id: <%=@shop.id%></p>

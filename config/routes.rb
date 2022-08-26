@@ -7,5 +7,9 @@ Rails.application.routes.draw do
     get '/bikes/:id', to: 'bikes#show'
     get '/shops/:id/bikes', to: 'shops#children_index'
 
+    get '/shops/:id/edit', to: 'shops#edit'
+
     post '/shops', to: 'shops#create'
+    patch '/shops/:id', to: 'shops#update'
+
 end

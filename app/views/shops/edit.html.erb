@@ -1,0 +1,14 @@
+<h1> Update Shop Attributes </h1>
+<%= form_with url: "/shops/#{@shop.id}", method: :patch, local: true do |form| %>
+
+<%= form.label :name %>
+<%= form.text_field :name %>
+
+<%= form.label :rank %>
+<%= form.text_field :rank %>
+
+<%= form.label :rentals %>
+<%= form.text_field :rentals %>
+
+<%= form.submit 'Submit Changes' %>
+<% end %>

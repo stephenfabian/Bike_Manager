@@ -32,4 +32,5 @@ RSpec.describe 'Shop Bikes Index page' do
       end
     end
   end
+
 end
