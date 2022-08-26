@@ -53,4 +53,7 @@ RSpec.describe 'the shops show page' do #USER STORY 2
       end
     end
   end
+
+
+
 end
