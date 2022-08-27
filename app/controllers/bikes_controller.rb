@@ -1,7 +1,8 @@
 class BikesController < ApplicationController
   def index
     # require 'pry'; binding.pry
-    @bikes = Bike.all
+    # @bikes = Bike.all
+    @bikes = Bike.where(full_suspension: "true")
     @shops = Shop.all #might not need
   end
 

@@ -36,4 +36,23 @@ RSpec.describe 'the bikes index page' do
       end
     end
   end
+
+  describe 'User Story 15' do
+
+    it 'when I visit Bike index, I only see bikes that have full_suspension (full_suspension = true)' do
+
+      shop = Shop.create!(name: "Denver Bike Shop", rentals: TRUE, rank: 8)
+      shop2 = Shop.create!(name: "Evo", rentals: FALSE, rank: 8)
+
+      bike = Bike.create!(name: "Sorta Cool Bike", full_suspension: FALSE, travel_length: 150, shop_id: shop.id)
+      bike2 = Bike.create!(name: "Semi Cool Bike", full_suspension: FALSE, travel_length: 156, shop_id: shop2.id)
+      bike3 = Bike.create!(name: "Really Cool Bike", full_suspension: TRUE, travel_length: 98, shop_id: shop2.id)
+
+      visit "/bikes"
+      expect(page).to have_content("Really Cool Bike")
+      expect(page).to_not have_content("Sorta Cool Bike")
+      expect(page).to_not have_content("Semi Cool Bike")
+
+    end
+  end
 end
