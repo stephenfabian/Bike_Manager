@@ -6,5 +6,5 @@
 <h1>Shops</h1>
 <% ordered_shops = @shops.order("created_at DESC") %>
 <% ordered_shops.each do |shop| %>
-<p><%= shop.name %>: <%= shop.created_at %><p>
+<p><%= shop.name %>: <%= shop.created_at %> <%= button_to "Edit #{shop.name}", "/shops/#{shop.id}/edit", method: :get %></p>
   <% end %>
