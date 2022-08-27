@@ -15,4 +15,7 @@ Rails.application.routes.draw do
     post '/shops', to: 'shops#create'
     patch '/shops/:id', to: 'shops#update'
 
+    get '/bikes/:id/edit', to: 'bikes#edit'
+    patch '/bikes/:id', to: 'bikes#update'
+
 end

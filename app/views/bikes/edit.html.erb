@@ -1,0 +1,14 @@
+<h1> Update Bike Attributes </h1>
+<%= form_with url: "/bikes/#{@bike.id}", method: :patch, local: true do |form| %>
+
+<%= form.label :name %>
+<%= form.text_field :name %>
+
+<%= form.label :full_suspension %>
+<%= form.text_field :full_suspension %>
+
+<%= form.label :travel_length %>
+<%= form.text_field :travel_length %>
+
+<%= form.submit 'Update Bike' %>
+<% end %>

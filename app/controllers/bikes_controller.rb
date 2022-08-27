@@ -12,15 +12,17 @@ class BikesController < ApplicationController
   def new
   end
 
-  # def create
-  #   bike = Bike.new({
-  #     name: params[:bike][:name],
-  #     full_suspension: params[:bike][:full_suspension],
-  #     travel_length: params[:bike][:travel_length],
-  #     })
+  def edit
+    @bike = Bike.find(params[:id])
+  end
 
-  #   bike.save
+  def update
+    @bike = Bike.find(params[:id])
+    @bike.update(bike_params)
+    redirect_to("/bikes/#{@bike.id}")
+  end
 
-  #   redirect_to '/bikes'
-  # end
+  def bike_params
+    params.permit(:name, :full_suspension, :travel_length)
+  end
 end
