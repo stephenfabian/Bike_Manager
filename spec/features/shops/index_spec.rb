@@ -96,13 +96,51 @@ end
      expect(page).to have_content('OregonBikeShop')
 
   end
-describe 'When I fill out the form with a new parents attributes:'
-describe 'And I click the button "Create Parent" to submit the form'
-describe 'Then a `POST` request is sent to the /parents route,'
-describe 'a new parent record is created,'
-describe 'and I am redirected to the Parent Index page where I see the new Parent displayed.'
 
 
+  describe 'User Story 17' do #How do I get the edit  button next to the Shop name? Do I need to?
+    it 'Shop index page has links next to each shop which take you to the shops edit page, 
+    after editing should return to shop index page' do
+      @shop = Shop.create!(name: "Europe Bike Shop", rentals: TRUE, rank: 8)
+      @shop2 = Shop.create!(name: "Sweden Bike Shop", rentals: TRUE, rank: 5)
 
+      visit ("/shops")
+      expect(page).to have_content("Europe Bike Shop")
+      expect(page).to have_button("Edit Europe Bike Shop")
 
+      expect(page).to have_content("Sweden Bike Shop")
+      expect(page).to have_button("Edit Sweden Bike Shop")
+
+      click_button("Edit Europe Bike Shop")
+      expect(current_path).to eq("/shops/#{@shop.id}/edit")
+
+      fill_in 'Name', with: 'Ok Shop'
+      fill_in 'Rank', with: 45
+      fill_in 'rentals', with: TRUE
+      click_button 'Submit Changes'
+
+      expect(current_path).to eq("/shops/#{@shop.id}")
+      expect(page).to have_content('Ok Shop')
+      expect(page).to have_content(45)
+      expect(page).to have_content(TRUE)
+
+      visit("/shops")
+
+      click_button("Edit Sweden Bike Shop")
+      expect(current_path).to eq("/shops/#{@shop2.id}/edit")
+
+      fill_in 'Name', with: 'Coolest Shop'
+      fill_in 'Rank', with: 99
+      fill_in 'rentals', with: TRUE
+      click_button 'Submit Changes'
+
+      expect(current_path).to eq("/shops/#{@shop2.id}")
+      expect(page).to have_content('Coolest Shop')
+      expect(page).to have_content(99)
+      expect(page).to have_content(TRUE)
+      expect(current_path).to eq("/shops/#{@shop2.id}")
+
+      visit "/shops"
+    end
+  end
 end
