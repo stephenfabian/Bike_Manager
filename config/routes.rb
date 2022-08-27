@@ -9,6 +9,9 @@ Rails.application.routes.draw do
 
     get '/shops/:id/edit', to: 'shops#edit'
 
+    get '/shops/:id/bikes/new', to: 'shops#new_bike'
+    post '/shops/:id/bikes', to: 'shops#create_bike'
+
     post '/shops', to: 'shops#create'
     patch '/shops/:id', to: 'shops#update'
 

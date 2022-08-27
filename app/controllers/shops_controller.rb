@@ -16,6 +16,10 @@ class ShopsController < ApplicationController
   def new
   end
 
+  def new_bike
+    @shop = Shop.find(params[:id])
+  end
+
   def create
   #  shop = Shop.create(name: params[:name])
   # used before we created .shop_params
@@ -23,6 +27,12 @@ class ShopsController < ApplicationController
     redirect_to "/shops"
   end
 
+  def create_bike
+   @shop = Shop.find(params[:id])
+   @bike = @shop.bikes.create!(bike_params)
+   redirect_to "/shops/#{@shop.id}/bikes"
+    # @bikes = Shop.find(params[:id]).bikes
+  end
   
   def edit
     @shop = Shop.find(params[:id])
@@ -34,8 +44,13 @@ class ShopsController < ApplicationController
     redirect_to "/shops/#{@shop.id}"
   end
 
+private
   def shop_params
     params.permit(:name, :rank, :rentals)
+  end
+
+  def bike_params
+    params.permit(:name, :full_suspension, :travel_length)
   end
 
 end

@@ -1,0 +1,12 @@
+<%= form_with url: "/shops/#{@shop.id}/bikes", method: :post, local: true do |form| %>
+  <%= form.label :name %>
+  <%= form.text_field :name %>
+
+  <%= form.label :full_suspension %>
+  <%= form.text_field :full_suspension %>
+  
+  <%= form.label :travel_length %>
+  <%= form.text_field :travel_length %>
+
+  <%= form.submit "Create Bike" %>
+  <% end %> 
