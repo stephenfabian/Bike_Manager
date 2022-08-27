@@ -1,6 +1,8 @@
 <%= link_to "Bike Index", "/bikes" %>
 <%= link_to "Shop Index", "/shops" %>
 <%= link_to "Add New Bike for #{@shop.name}", "/shops/#{@shop.id}/bikes/new" %>
+<%= link_to "Sort Bikes Alphabetically", "/shops/#{@shop.id}/bikes" %>
+
 
 
 <%@shop.bikes.each do |bike|%>

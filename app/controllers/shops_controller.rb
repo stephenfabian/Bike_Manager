@@ -9,9 +9,11 @@ class ShopsController < ApplicationController
     @shop = Shop.find(params[:id])
   end
 
-  def children_index
+  # def children_index
+  def bike_index
     @shop = Shop.find(params[:id])
     @bikes = Bike.all
+    # @bike = Bike.find(params[:id])
   end
 
   def new
