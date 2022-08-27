@@ -3,7 +3,7 @@
 <%= link_to "Bikes At This Shop", "/shops/#{@shop.id}/bikes" %>
 <%= link_to "Update Shop", "/shops/#{@shop.id}/edit" %>
 
-<h1><%=@shop.name%></h1>
+<h1><%=@shop.name%> <%= button_to "Delete", "/shops/#{@shop.id}", method: :delete  %></h1>
 <p>Id: <%=@shop.id%></p>
 <p>Rank: <%=@shop.rank%></p>
 <p>Rentals: <%=@shop.rentals%></p>
