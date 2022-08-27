@@ -51,6 +51,13 @@ class ShopsController < ApplicationController
     params.permit(:name, :full_suspension, :travel_length)
   end
 
+  def destroy
+    @shop = Shop.find(params[:id])
+    @shop.bikes.destroy_all
+    @shop.destroy
+    redirect_to "/shops"
+  end
+
 private
   def shop_params
     params.permit(:name, :rank, :rentals)
