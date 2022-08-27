@@ -1,6 +1,7 @@
 <%= link_to "Bike Index", "/bikes" %>
 <%= link_to "Shop Index", "/shops" %>
 <%= link_to "Update Bike", "/bikes/#{@bike.id}/edit" %>
+<%= button_to "Delete #{@bike.name}", "/bikes/#{@bike.id}", method: :delete %>
 
 <h1><%=@bike.name%><h1>
 <p><%=@bike.id%><p>
