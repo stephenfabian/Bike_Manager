@@ -38,7 +38,6 @@ RSpec.describe 'the bikes index page' do
   end
 
   describe 'User Story 15' do
-
     it 'when I visit Bike index, I only see bikes that have full_suspension (full_suspension = true)' do
 
       shop = Shop.create!(name: "Denver Bike Shop", rentals: TRUE, rank: 8)
@@ -55,4 +54,61 @@ RSpec.describe 'the bikes index page' do
 
     end
   end
+
+
+
+
+# As a visitor
+# When I visit the `child_table_name` index page or a parent `child_table_name` index page
+# Next to every child, I see a link to edit that child's info
+# When I click the link
+# I should be taken to that `child_table_name` edit page where I can update its information just like in User Story 1
+
+  describe 'User Story 18, Child Update From Childs Index Page' do
+    it 'on Bike index page, each bike has a link to edit bikes info, the link takes you to an edit page' do
+        @shop = Shop.create!(name: "Europe Bike Shop", rentals: TRUE, rank: 8)
+
+        @bike1 = Bike.create!(name: "Santa Cruz", full_suspension: TRUE, travel_length: 150, shop_id: @shop.id)
+        @bike2 = Bike.create!(name: "Pivot", full_suspension: TRUE, travel_length: 150, shop_id: @shop.id)
+
+        visit ("/bikes")
+        expect(page).to have_content("Santa Cruz")
+        expect(page).to have_button("Edit Santa Cruz")
+
+        expect(page).to have_content("Pivot")
+        expect(page).to have_button("Edit Pivot")
+
+        click_button("Edit Santa Cruz")
+        expect(current_path).to eq("/bikes/#{@bike1.id}/edit")
+
+        fill_in 'Name', with: 'Wills Bike'
+        fill_in 'Full suspension', with: TRUE
+        fill_in 'Travel length', with: 170
+        click_button 'Update Bike'
+
+        expect(current_path).to eq("/bikes/#{@bike1.id}")
+        expect(page).to have_content('Wills Bike')
+        expect(page).to have_content(TRUE)
+        expect(page).to have_content(170)
+
+        visit("/bikes")
+
+        click_button("Edit Pivot")
+        expect(current_path).to eq("/bikes/#{@bike2.id}/edit")
+
+        fill_in 'Name', with: 'Stephens Bike'
+        fill_in 'Full suspension', with: TRUE
+        fill_in 'Travel length', with: 150
+        click_button 'Update Bike'
+
+        expect(current_path).to eq("/bikes/#{@bike2.id}")
+        expect(page).to have_content('Stephens Bike')
+        expect(page).to have_content(TRUE)
+        expect(page).to have_content(150)
+        expect(current_path).to eq("/bikes/#{@bike2.id}")
+
+        visit "/bikes"
+    end
+  end
 end
+

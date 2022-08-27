@@ -4,10 +4,10 @@
 
 <h1>BIKES</h1>
 <% @bikes.each do |bike| %>
-  <p>Name: <%= bike.name %><p>
-  <p>Bike id: <%= bike.id %><p>
-  <p>Full Suspension: <%= bike.full_suspension %><p>
-  <p>Travel Length: <%= bike.travel_length %><p> 
-  <p>Created at date: <%= bike.created_at %><p>
-  <p>UPdated at date: <%= bike.updated_at %><p>
+  <p>Name: <%= bike.name %><%= button_to "Edit #{bike.name}", "/bikes/#{bike.id}/edit", method: :get %></p>
+  <p>Bike id: <%= bike.id %></p>
+  <p>Full Suspension: <%= bike.full_suspension %></p>
+  <p>Travel Length: <%= bike.travel_length %></p> 
+  <p>Created at date: <%= bike.created_at %></p>
+  <p>Updated at date: <%= bike.updated_at %></p>
 <%end%>
