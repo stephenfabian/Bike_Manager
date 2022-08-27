@@ -26,4 +26,10 @@ class BikesController < ApplicationController
   def bike_params
     params.permit(:name, :full_suspension, :travel_length)
   end
+
+  def destroy
+    @bike = Bike.find(params[:id])
+    @bike.destroy
+    redirect_to("/bikes")
+  end
 end
