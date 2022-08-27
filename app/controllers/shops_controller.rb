@@ -1,4 +1,5 @@
 class ShopsController < ApplicationController
+
   def index
     @shops = Shop.all
   end
@@ -44,13 +45,15 @@ class ShopsController < ApplicationController
     redirect_to "/shops/#{@shop.id}"
   end
 
+  def bike_params
+    params.permit(:name, :full_suspension, :travel_length)
+  end
+
 private
   def shop_params
     params.permit(:name, :rank, :rentals)
   end
 
-  def bike_params
-    params.permit(:name, :full_suspension, :travel_length)
-  end
+
 
 end

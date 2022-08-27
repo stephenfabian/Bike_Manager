@@ -16,10 +16,10 @@ RSpec.describe 'the shop edit feature' do
         click_on("Update Shop")
         expect(current_path).to eq("/shops/#{@shop.id}/edit")
 
-      fill_in 'Name', with: 'Coolest Shop'
-      fill_in 'Rank', with: 45
-      fill_in 'rentals', with: TRUE
-      click_button 'Submit Changes'
+        fill_in 'Name', with: 'Coolest Shop'
+        fill_in 'Rank', with: 45
+        fill_in 'rentals', with: TRUE
+        click_button 'Submit Changes'
 
       expect(current_path).to eq("/shops/#{@shop.id}")
       expect(page).to have_content('Coolest Shop')
