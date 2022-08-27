@@ -1,11 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe 'the bikes show page' do #USER STORY 2
-#As a visitor
-#When I visit '/parents/:id'
-#Then I see the parent with that id including the parent's attributes:
-#- data from each column that is on the parent table
-  it 'displays the bike title and bike attributes' do
+
+  it 'When I visit /bikes/:id, page displays the bike title and bike attributes' do
 
     bike = Bike.create!(name: "Bronson", full_suspension: TRUE, travel_length: 8)
     visit "/bikes/#{bike.id}"

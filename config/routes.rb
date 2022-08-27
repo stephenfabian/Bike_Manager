@@ -5,7 +5,8 @@ Rails.application.routes.draw do
     get '/shops/:id', to: 'shops#show'
     get '/bikes', to: 'bikes#index'
     get '/bikes/:id', to: 'bikes#show'
-    get '/shops/:id/bikes', to: 'shops#children_index'
+    # get '/shops/:id/bikes', to: 'shops#children_index'
+    get '/shops/:id/bikes', to: 'shops#bike_index'
 
     get '/shops/:id/edit', to: 'shops#edit'
 
