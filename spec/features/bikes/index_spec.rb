@@ -110,5 +110,7 @@ RSpec.describe 'the bikes index page' do
         visit "/bikes"
     end
   end
+
+  
 end
 

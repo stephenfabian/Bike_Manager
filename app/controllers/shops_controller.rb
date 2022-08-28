@@ -1,7 +1,17 @@
 class ShopsController < ApplicationController
 
   def index
-    @shops = Shop.all
+      @shops = Shop.all.order(created_at: :desc)
+    if params[:id]
+        if !params[:input_number].blank?
+      # require 'pry'; binding.pry
+          @bikes = @shop.records_over_threshold(params[:input_number])
+        else 
+          @bikes = Bike.all
+        end
+    else
+      @shops = Shop.all.order(created_at: :desc)
+    end
   end
 
   def show
@@ -9,10 +19,11 @@ class ShopsController < ApplicationController
     @shop = Shop.find(params[:id])
   end
 
-  # def children_index
-  def bike_index
+
+  def shop_bikes
+
     @shop = Shop.find(params[:id])
-    @bikes = Bike.all
+
     # @bike = Bike.find(params[:id])
   end
 
@@ -57,6 +68,7 @@ class ShopsController < ApplicationController
     @shop.destroy
     redirect_to "/shops"
   end
+
 
 private
   def shop_params
