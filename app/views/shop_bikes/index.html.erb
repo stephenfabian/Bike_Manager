@@ -13,7 +13,7 @@
 
 <%@bikes.each do |bike|%>
 
-  <h1><%=bike.name%></h1>
+  <h1><%=bike.name%> <%= button_to "Delete #{bike.name}", "/bikes/#{bike.id}", method: :delete  %> </h1>
   <p><%=bike.full_suspension%></p>
   <p><%=bike.travel_length%></p>
   <p><%=bike.shop_id%></p>

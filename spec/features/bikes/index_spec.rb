@@ -111,6 +111,48 @@ RSpec.describe 'the bikes index page' do
     end
   end
 
-  
+
+# User Story 23, Child Delete From Childs Index Page 
+
+# As a visitor
+# When I visit the `child_table_name` index page or a parent `child_table_name` index page
+# Next to every child, I see a link to delete that child
+# When I click the link
+# I should be taken to the `child_table_name` index page where I no longer see that child
+
+
+  describe 'User Story 23, Child Delete From Childs Index Page' do
+    it 'visit Bikes index or a Shops Bikes index, next to every bike theres a link to delete that bike.  
+    When I click link get redirected to bikes index, where deleted bike isnt shown' do
+        @shop = Shop.create!(name: "Europe Bike Shop", rentals: TRUE, rank: 8)
+
+        @bike1 = Bike.create!(name: "Santa Cruz", full_suspension: TRUE, travel_length: 150, shop_id: @shop.id)
+        @bike2 = Bike.create!(name: "Pivot", full_suspension: TRUE, travel_length: 150, shop_id: @shop.id)
+        @bike3 = Bike.create!(name: "GT", full_suspension: TRUE, travel_length: 130, shop_id: @shop.id)
+
+        visit("/bikes")
+        expect(page).to have_button("Delete #{@bike1.name}")
+        expect(page).to have_button("Delete #{@bike2.name}")
+        expect(page).to have_button("Delete #{@bike3.name}")
+
+        click_button("Delete #{@bike1.name}")
+        expect(current_path).to eq("/bikes")
+        
+        expect(page).to_not have_content("Santa Cruz")
+        expect(page).to have_content("Pivot")
+        expect(page).to have_content("GT")
+
+        visit("/shops/#{@shop.id}/bikes")
+        expect(page).to have_button("Delete #{@bike2.name}")
+        expect(page).to have_button("Delete #{@bike3.name}")
+
+        click_button("Delete #{@bike2.name}")
+        expect(current_path).to eq("/bikes")
+        expect(page).to have_content("GT")
+        expect(page).to_not have_content("Pivot")
+        expect(page).to_not have_content("Santa Cruz")
+
+    end
+  end
 end
 
