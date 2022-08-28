@@ -6,5 +6,5 @@
 
 <h1>Shops</h1>
 <% @shops.each do |shop| %>
-<p><%= shop.name %>: <%= shop.created_at %> <%= button_to "Edit #{shop.name}", "/shops/#{shop.id}/edit", method: :get %></p>
+<p><%= shop.name %>: <%= shop.created_at %> <%= button_to "Edit #{shop.name}", "/shops/#{shop.id}/edit", method: :get %> <%= link_to "Delete #{shop.name}", "/shops/#{shop.id}", method: :delete  %></p>
   <% end %>

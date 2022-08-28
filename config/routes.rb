@@ -22,5 +22,7 @@ Rails.application.routes.draw do
     delete '/shops/:id', to: 'shops#destroy'
     delete '/bikes/:id', to: 'bikes#destroy'
 
+    delete '/shops', to: 'shops#destroy'
+
     get '/shops/:id/bikes', to: 'shops#records_over_threshold'
 end
