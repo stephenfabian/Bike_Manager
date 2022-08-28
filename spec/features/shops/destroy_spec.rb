@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe 'destroying a shop' do
-  describe 'User Story 19 - Parent Delete'
+  describe 'User Story 19 - Parent Delete' do
     it 'can delete Shop from Shop#show page, shop and its bike records are deleted, redirect to shop index, shop shows as deleted' do
       @shop = Shop.create!(name: "Europe Bike Shop", rentals: TRUE, rank: 8)
 

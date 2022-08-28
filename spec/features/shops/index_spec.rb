@@ -11,7 +11,7 @@ RSpec.describe 'the Shop Index sorted by Most Recently Created' do #USER STORY 6
   describe 'As a visitor' do
     before :each do
        @shop = Shop.create!(name: "Denver Bike Shop", rentals: TRUE, rank: 8)
-        @bike = Bike.create!(name: "Bronson", full_suspension: TRUE, travel_length: 150, shop_id: @shop.id)
+       @bike = Bike.create!(name: "Bronson", full_suspension: TRUE, travel_length: 150, shop_id: @shop.id)
     end
 
     describe 'When I visit the parent index' do
@@ -49,12 +49,14 @@ RSpec.describe 'the Shop Index sorted by Most Recently Created' do #USER STORY 6
   describe 'As a visitor' do
     describe 'When I visit any page on the site' do 
       it 'Then I see a link at the top of the page that takes me to the Parent Index' do
+        @shop = Shop.create!(name: "Denver Bike Shop", rentals: TRUE, rank: 8)
+        @bike = Bike.create!(name: "Bronson", full_suspension: TRUE, travel_length: 150, shop_id: @shop.id)
 
         visit "/bikes"
-        visit "/bikes/#{bike.id}"
+        visit "/bikes/#{@bike.id}"
         visit "/shops"
-        visit "/shops/#{shop.id}"
-        visit "/shops/#{shop.id}/bikes"
+        visit "/shops/#{@shop.id}"
+        visit "/shops/#{@shop.id}/bikes"
 
         click_on "Shop Index"
         expect(current_path).to eq("/shops")
@@ -68,7 +70,8 @@ RSpec.describe 'the Shop Index sorted by Most Recently Created' do #USER STORY 6
   describe 'As a visitor' do 
     describe 'When I visit the Parent Index page' do
       it 'Then I see a link to create a new Parent record, New Parent' do
-
+        @shop = Shop.create!(name: "Denver Bike Shop", rentals: TRUE, rank: 8)
+        @bike = Bike.create!(name: "Bronson", full_suspension: TRUE, travel_length: 150, shop_id: @shop.id)
         visit '/shops'
         expect(page).to have_content("New Shop")
         save_and_open_page
@@ -79,6 +82,8 @@ RSpec.describe 'the Shop Index sorted by Most Recently Created' do #USER STORY 6
 
 describe 'When I click this link' do 
   it 'Then I am taken to /parents/new where I  see a form for a new parent record' do
+     @shop = Shop.create!(name: "Denver Bike Shop", rentals: TRUE, rank: 8)
+     @bike = Bike.create!(name: "Bronson", full_suspension: TRUE, travel_length: 150, shop_id: @shop.id)
 
      visit '/shops'
      click_link("New Shop")
@@ -87,6 +92,8 @@ describe 'When I click this link' do
 end
 
   it 'can create a new shop' do 
+      @shop = Shop.create!(name: "Denver Bike Shop", rentals: TRUE, rank: 8)
+      @bike = Bike.create!(name: "Bronson", full_suspension: TRUE, travel_length: 150, shop_id: @shop.id)
      visit '/shops/new'
 
      fill_in('Name', with: 'OregonBikeShop')
