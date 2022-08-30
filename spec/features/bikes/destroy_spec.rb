@@ -7,8 +7,7 @@ RSpec.describe 'User Story 20, Child Delete' do
       @bike = Bike.create!(name: "Santa Cruz", full_suspension: TRUE, travel_length: 150, shop_id: @shop.id)
 
       visit "/bikes/#{@bike.id}"
-      save_and_open_page
-      click_button("Delete #{@bike.name}")
+      click_link("Delete #{@bike.name}")
 
       expect(current_path).to eq("/bikes")
       expect(page).to_not have_content("Santa Cruz")

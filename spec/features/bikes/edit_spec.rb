@@ -26,7 +26,6 @@ RSpec.describe 'User Story 14' do
     expect(current_path).to eq("/bikes/#{@bike.id}/edit")
 
     fill_in 'Name', with: 'Newest Santa Cruz'
-    save_and_open_page
     fill_in 'Full suspension', with: TRUE
     fill_in 'Travel length', with: 160
     click_button 'Update Bike'

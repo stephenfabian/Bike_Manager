@@ -10,7 +10,8 @@ Rails.application.routes.draw do
 
     get '/shops/:id/edit', to: 'shops#edit'
 
-    get '/shops/:id/bikes/new', to: 'shops#new_bike'
+    get '/shops/:id/bikes/new', to: 'shop_bikes#new'
+
     post '/shops/:id/bikes', to: 'shops#create_bike'
 
     post '/shops', to: 'shops#create'

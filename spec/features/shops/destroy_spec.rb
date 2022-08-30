@@ -27,14 +27,13 @@ RSpec.describe 'destroying a shop' do
       @bike2 = Bike.create!(name: "Pivot", full_suspension: TRUE, travel_length: 150, shop_id: @shop2.id)
 
       visit ("/shops")
-      expect(page).to have_link("Delete OutofStyle Shop")
-      expect(page).to have_link("Delete Worstshop")
+      expect(page).to have_button("Delete OutofStyle Shop")
+      expect(page).to have_button("Delete Worstshop")
 
-      click_link("Delete OutofStyle Shop")
+      click_button("Delete OutofStyle Shop")
       expect(current_path).to eq("/shops")
 
       expect(page).to_not have_content("OutofStyle Shop")
-      save_and_open_page
     end
 
   end
