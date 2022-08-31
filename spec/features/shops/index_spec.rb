@@ -1,12 +1,6 @@
 require 'rails_helper'
 
-# As a visitor
-# When I visit the parent index,
-# I see that records are ordered by most recently created first
-# And next to each of the records I see when it was created
-
-
-RSpec.describe 'the Shop Index sorted by Most Recently Created' do #USER STORY 6
+RSpec.describe 'USER STORY 6-the Shop Index sorted by Most Recently Created' do 
 
   describe 'As a visitor' do
     before :each do
@@ -35,10 +29,7 @@ RSpec.describe 'the Shop Index sorted by Most Recently Created' do #USER STORY 6
     end
   end
 
-
-# User Story 9, Parent Index Link
-
-  describe 'As a visitor' do
+  describe 'User Story 9, Parent Index Link' do
     describe 'When I visit any page on the site' do 
       it 'Then I see a link at the top of the page that takes me to the Parent Index' do
         @shop = Shop.create!(name: "Denver Bike Shop", rentals: TRUE, rank: 8)
@@ -56,9 +47,7 @@ RSpec.describe 'the Shop Index sorted by Most Recently Created' do #USER STORY 6
     end
   end
 
-  # User Story 11, Parent Creation 
-
-  describe 'As a visitor' do 
+  describe 'User Story 11, Parent Creation' do 
     describe 'When I visit the Parent Index page' do
       it 'Then I see a link to create a new Parent record, New Parent' do
         @shop = Shop.create!(name: "Denver Bike Shop", rentals: TRUE, rank: 8)
@@ -70,8 +59,7 @@ RSpec.describe 'the Shop Index sorted by Most Recently Created' do #USER STORY 6
     end
   end
 
-describe 'When I click this link' do 
-  it 'Then I am taken to /parents/new where I  see a form for a new parent record' do
+  it 'I click this link, then I am taken to /parents/new where I  see a form for a new parent record' do
      @shop = Shop.create!(name: "Denver Bike Shop", rentals: TRUE, rank: 8)
      @bike = Bike.create!(name: "Bronson", full_suspension: TRUE, travel_length: 150, shop_id: @shop.id)
 
@@ -80,7 +68,7 @@ describe 'When I click this link' do
 
      expect(current_path).to eq("/shops/new")
   end
-end
+
 
   it 'can create a new shop' do 
     @shop = Shop.create!(name: "Denver Bike Shop", rentals: TRUE, rank: 8)
