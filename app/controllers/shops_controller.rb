@@ -1,19 +1,6 @@
 class ShopsController < ApplicationController
 
-  # def index --- Candace solution
-  #     @shops = Shop.all.order(created_at: :desc)
-  #   if params[:id]
-  #     if !params[:input_number].blank?
-  #       @bikes = @shop.records_over_threshold(params[:input_number])
-  #     else 
-  #       @bikes = Bike.all
-  #     end
-  #   else
-  #     @shops = Shop.all.order(created_at: :desc)
-  #   end
-  # end
-
-  def index # --- refactored
+  def index 
     @shops = Shop.all.order(created_at: :desc)
     @bikes = Bike.all
     @bikes = @shop.records_over_threshold(params[:input_number]) if !params[:input_number].blank?
@@ -23,20 +10,11 @@ class ShopsController < ApplicationController
     @shop = Shop.find(params[:id])
   end
 
-  def shop_bikes
-    @shop = Shop.find(params[:id])
-  end
-
   def new
   end
 
-  #moved to shop_bikes controller
-  # def new_bike
-  #   @shop = Shop.find(params[:id])
-  # end
-
   def create
-    shop = Shop.create(shop_params)
+    Shop.create(shop_params)
     redirect_to "/shops"
   end
 
