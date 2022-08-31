@@ -5,7 +5,7 @@ RSpec.describe Shop, type: :model do
 
   it { should validate_presence_of (:name)}
   it { should validate_presence_of (:rank)}
-  it { should validate_presence_of (:rentals)} 
+  # it { should validate_presence_of (:rentals)} 
 
   describe 'count_bikes' do
     it 'tests that method can count number of bikes for a shop' do
