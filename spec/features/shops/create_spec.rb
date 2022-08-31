@@ -26,7 +26,10 @@ RSpec.describe 'User Story 13, Parent Child Creation' do
     expect(current_path).to eq("/shops/#{@shop.id}/bikes/new")
 
     fill_in 'Name', with: 'UPshredder'
-    fill_in 'Full suspension', with: TRUE
+    # fill_in 'Full suspension', with: TRUE
+    # save_and_open_page
+select(TRUE, :from => "full_suspension")
+
     fill_in 'Travel length', with: 300
     click_button 'Create Bike'
 

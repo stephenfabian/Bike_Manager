@@ -2,9 +2,9 @@
 <%= link_to "Shop Index", "/shops" %>
 <%= link_to "New Shop", "/shops/new" %>
 
-
-
 <h1>Shops</h1>
 <% @shops.each do |shop| %>
-<p><%= shop.name %>: <%= shop.created_at %> <%= button_to "Edit #{shop.name}", "/shops/#{shop.id}/edit", method: :get %> <%= link_to "Delete #{shop.name}", "/shops/#{shop.id}", method: :delete  %></p>
+<p><h3>Name: <%= shop.name %></h3></p>
+<p><h3>Created at: <%= shop.created_at %></h3> <%= button_to "Edit #{shop.name}", "/shops/#{shop.id}/edit", method: :get %> 
+<%= button_to "Delete #{shop.name}", "/shops/#{shop.id}", method: :delete  %></p>
   <% end %>

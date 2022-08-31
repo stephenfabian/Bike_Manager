@@ -6,6 +6,6 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-@shop = Shop.create!(name: "Europe Bike Shop", rentals: TRUE, rank: 8)
-@bike1 = Bike.create!(name: "Santa Cruz", full_suspension: TRUE, travel_length: 180, shop_id: @shop.id)
-@bike2 = Bike.create!(name: "Pivot", full_suspension: TRUE, travel_length: 100, shop_id: @shop.id)
+@shop = Shop.create!(name: "Evolution Bike Shop", rentals: TRUE, rank: 8)
+@bike1 = Bike.create!(name: "Mega Bike", full_suspension: TRUE, travel_length: 180, shop_id: @shop.id)
+@bike2 = Bike.create!(name: "Mini Bike", full_suspension: TRUE, travel_length: 90, shop_id: @shop.id)
