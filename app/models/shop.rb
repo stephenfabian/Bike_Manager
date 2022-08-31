@@ -3,7 +3,7 @@ class Shop < ApplicationRecord
 
   validates :name, presence: true
   validates :rank, presence: true
-  validates :rentals, :inclusion => {:in => [true, false]}
+  # validates :rentals, :inclusion => {:in => [true, false]}
   
   def count_bikes
     self.bikes.count
